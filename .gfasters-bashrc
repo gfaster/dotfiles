@@ -1,0 +1,13 @@
+# shorten dir
+export PROMPT_DIRTRIM=2
+
+# remap caps to escape
+setxkbmap -option caps:escape
+
+alias l="ls -a"
+alias ll="ls -la"
+alias ..="cd .."
+
+cs() { cd "$@" && ls; }
+
+start() { nohup "$@" </dev/null >/dev/null 2>&1 && disown & }
