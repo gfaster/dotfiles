@@ -46,7 +46,12 @@ sudo apt -y install python3-pip
 
 sudo apt -y install subl
 
+# VIM setup (initial install above)
+#---------------------
+# vim package manager
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 # Cleanup
-----------------------
+# ----------------------
 rm -rf ./tmp

@@ -8,6 +8,18 @@ alias l="ls -a"
 alias ll="ls -la"
 alias ..="cd .."
 
+alias slp="systemctl suspend"
+alias noslp="xset -dpms; xset s noblank; xset s off"
+
+alias py="python3"
+alias python="python3"
+alias pip="pip3"
+
+alias gc="git commit -m"
+alias ga="git add"
+
 cs() { cd "$@" && ls; }
 
 start() { nohup "$@" </dev/null >/dev/null 2>&1 && disown & }
+
+alias h="history 20"
