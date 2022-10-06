@@ -8,3 +8,6 @@ I still haven't tested this so it's gonna be up to future me
 - probably more git gcm setup
 - 1password ssh credential manager
 - setup for programs such as 1password, thunderbird, firefox
+
+## TODO:
+[ ] include [fd](https://github.com/sharkdp/fd)
