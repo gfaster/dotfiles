@@ -20,3 +20,29 @@ else
 fi
 cp ./vimrc.vim ~/.vimrc
 nvim +PlugInstall +qall
+
+
+
+# Settings - I need to check if this may change
+xfconf-query -c xfce4-panel -p /plugins/plugin-12/digital-format -s "%Y-%m-%d %l:%M %p (%a)"
+
+# Parts of this were stolen from: https://github.com/ukncsc/Device-Security-Guidance-Configuration-Packs/blob/main/Linux/UbuntuLTS/
+# -------------------------------------
+# Disable spyware
+sudo systemctl stop apport.service
+sudo systemctl disable apport.service
+sudo systemctl mask apport.service
+
+sudo systemctl stop whoopsie.service
+sudo systemctl disable whoopsie.service
+sudo systemctl mask whoopsie.service
+
+sudo apt-get remove -y popularity-contest
+
+# Set some AppArmor profiles to enforce mode.
+# avahi broadcasts on local network
+sudo aa-enforce /etc/apparmor.d/usr.bin.firefox
+sudo aa-enforce /etc/apparmor.d/usr.sbin.avahi-daemon
+sudo aa-enforce /etc/apparmor.d/usr.sbin.dnsmasq
+sudo aa-enforce /etc/apparmor.d/bin.ping
+sudo aa-enforce /etc/apparmor.d/usr.sbin.rsyslogd

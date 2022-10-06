@@ -23,3 +23,22 @@ cs() { cd "$@" && ls; }
 start() { nohup "$@" </dev/null >/dev/null 2>&1 && disown & }
 
 alias h="history 20"
+
+# from https://superuser.com/a/611582
+countdown() {
+    start="$(( $(date '+%s') + $1))"
+    while [ $start -ge $(date +%s) ]; do
+        time="$(( $start - $(date +%s) ))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        sleep 0.1
+    done
+}
+
+stopwatch() {
+    start=$(date +%s)
+    while true; do
+        time="$(( $(date +%s) - $start))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        sleep 0.1
+    done
+}
