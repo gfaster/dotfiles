@@ -7,6 +7,7 @@ setxkbmap -option caps:escape
 alias l="ls -a"
 alias ll="ls -la"
 alias ..="cd .."
+alias fd="fdfind"
 
 alias slp="systemctl suspend"
 alias noslp="xset -dpms; xset s noblank; xset s off"

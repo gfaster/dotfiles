@@ -8,14 +8,12 @@ mkdir tmp
 # --------------------
 
 sudo apt -y install guake
-
 sudo apt -y install neovim
-
 sudo apt -y install git
-
 sudo apt -y install firefox
-
 sudo apt -y install curl
+sudo apt -y install fd-find
+sudo apt -y install aptitude
 
 # TODO: include 1password cli (https://developer.1password.com/docs/cli/get-started/)
 # TODO: install via apt and verify signature (https://support.1password.com/install-linux/)
@@ -50,12 +48,10 @@ if [ ! -x git-credential-manager-core; ]; then
 	git-credential-manager-core configure
 fi
 sudo apt -y install g++
-
 sudo apt -y install python3-pip
-
 sudo apt -y install subl
-
 sudo apt -y install cmake
+sudo apt -y install universal-ctags
 
 #TODO: Mutt download and install - getting that working might be a pain
 # VIM setup (initial install above)

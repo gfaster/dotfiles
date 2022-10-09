@@ -37,6 +37,20 @@ sudo systemctl stop whoopsie.service
 sudo systemctl disable whoopsie.service
 sudo systemctl mask whoopsie.service
 
+sudo systemctl stop ua-messaging.timer
+sudo systemctl disable ua-messaging.timer
+sudo systemctl mask ua-messaging.timer
+
+sudo systemctl stop ua-messaging.service
+sudo systemctl diable ua-messaging.service
+sudo systemctl mask ua-messaging.service
+
+sudo systemctl stop ua-timer.timer
+sudo systemctl disable ua-timer.timer
+sudo systemctl mask ua-timer.timer
+
+sudo rm /etc/apt/apt.conf.d/20apt-esm-hook.conf
+
 sudo apt-get remove -y popularity-contest
 
 # Set some AppArmor profiles to enforce mode.

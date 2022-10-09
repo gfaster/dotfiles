@@ -14,7 +14,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
-
+Plug 'sheerun/vim-polyglot'
+Plug 'xolox/vim-misc'
+Plug 'majutsushi/tagbar'
 
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -29,11 +31,16 @@ nnoremap <leader>f :NERDTreeFocus<CR>
 "nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+nmap <F8> :TagbarToggle<CR>
 
 let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
 
-let g:airline_theme='simple'
+let g:airline_theme='fairyfloss'
 
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
+let g:airline#extensions#ale#enabled = 1
+
+ 
+set mouse=
