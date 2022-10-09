@@ -1,8 +1,17 @@
 #!bin/bash
 set -e
 
-# autostart guake
-sudo cp /usr/share/applications/guake.desktop /etc/xdg/autostart/
+# autostart guake (seems to be something up with the symlink, so we need to futz around with it)
+if [ -L /usr/share/applications/guake.desktop ] ; then
+  if [ -e /usr/share/applications/guake.desktop ] ; then
+		sudo install -m 644 /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
+	else
+		sudo rm /usr/share/applications/guake.desktop
+		sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
+	fi
+else
+	sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
+fi
 
 # setup bash profile
 cp ./.gfasters-bashrc ~/ &&
