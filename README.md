@@ -51,3 +51,5 @@ I still haven't tested this so it's gonna be up to future me
 [X] include [fd](https://github.com/sharkdp/fd)
 [ ] add `vi +%(line_number)s %(file_path)s -c 'normal zz'` to guake quick open
 [ ] set guake theme to "solarized dark higher contrast"
+[ ] add a solution to [this](https://github.com/snapcrafters/discord/issues/23) issue
+[ ] Get leap (see HN article)
