@@ -13,12 +13,13 @@ else
 	sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
 fi
 
+
 # setup bash profile
 cp ./.gfasters-bashrc ~/ &&
 grep -Fq "source ~/.gfasters-bashrc" < ~/.bashrc || echo "source ~/.gfasters-bashrc" >> ~/.bashrc
 
 # enable gcm - there is probably more to do here
-git config --global credential.credentialStore "cache --timeout=86400"
+# git config --global credential.credentialStore "cache --timeout=86400"
 
 # VIM setup
 mkdir -p ~/.config/nvim
@@ -34,6 +35,24 @@ nvim +PlugInstall +qall
 
 # Settings - I need to check if this may change
 xfconf-query -c xfce4-panel -p /plugins/plugin-12/digital-format -s "%Y-%m-%d %l:%M %p (%a)"
+# disable desktop icons (set to 2 to restore)
+xfconf-query -c xfce4-desktop -v --create -p /desktop-icons/style -t int -s 0
+
+# Setup network security
+mkdir -p /usr/local/scripts/setup
+install -m 700 # adfafsaafafasd
+
+
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw allow 443/tcp # Discord text chat
+sudo ufw allow 5353/udp # avahi
+sudo ufw allow imap
+sudo ufw allow smtp
+sudo ufw logging on
+sudo ufw enable
+
 
 # Parts of this were stolen from: https://github.com/ukncsc/Device-Security-Guidance-Configuration-Packs/blob/main/Linux/UbuntuLTS/
 # -------------------------------------

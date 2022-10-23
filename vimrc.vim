@@ -17,6 +17,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'xolox/vim-misc'
 Plug 'majutsushi/tagbar'
+"Plug 'ggandor/leap.nvim'
+"Plug 'airblade/vim-gitgutter'
 
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -33,9 +35,9 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 nmap <F8> :TagbarToggle<CR>
 
-inoremap {<cr> {<cr>}<c-o>O<tab>
-inoremap [<cr> [<cr>]<c-o>O<tab>
-inoremap (<cr> (<cr>)<c-o>O<tab>
+inoremap {<cr> {<cr>}<c-o>O
+inoremap [<cr> [<cr>]<c-o>O
+inoremap (<cr> (<cr>)<c-o>O
 
 let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
 
@@ -46,5 +48,8 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:airline#extensions#ale#enabled = 1
 
+"lua require('leap').add_default_mappings()
+
+"set updatetime=1000
  
 set mouse=

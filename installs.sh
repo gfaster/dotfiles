@@ -14,10 +14,8 @@ sudo apt -y install firefox
 sudo apt -y install curl
 sudo apt -y install fd-find
 sudo apt -y install aptitude
+sudo apt -y install tcptrack
 
-# TODO: include 1password cli (https://developer.1password.com/docs/cli/get-started/)
-# TODO: install via apt and verify signature (https://support.1password.com/install-linux/)
-snap install 1password
 
 snap install thunderbird
 
@@ -41,12 +39,12 @@ sudo apt -y install apparmor-utils
 # Dev tools
 # --------------------
 
-# git credential manager
-if [ ! -x git-credential-manager-core; ]; then  
-	curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh &&
-	sh ./install-from-source.sh &&
-	git-credential-manager-core configure
-fi
+# git credential manager (superceded by 1password)
+# if [ ! -x git-credential-manager-core; ]; then  
+# 	curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh &&
+# 	sh ./install-from-source.sh &&
+# 	git-credential-manager-core configure
+# fi
 sudo apt -y install g++
 sudo apt -y install python3-pip
 sudo apt -y install subl
