@@ -2,35 +2,21 @@
 set -e
 
 # autostart guake (seems to be something up with the symlink, so we need to futz around with it)
-if [ -L /usr/share/applications/guake.desktop ] ; then
-  if [ -e /usr/share/applications/guake.desktop ] ; then
-		sudo install -m 644 /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
-	else
-		sudo rm /usr/share/applications/guake.desktop
-		sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
-	fi
-else
-	sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
-fi
+# if [ -L /usr/share/applications/guake.desktop ] ; then
+#   if [ -e /usr/share/applications/guake.desktop ] ; then
+# 		sudo install -m 644 /usr/share/applications/guake.desktop /etc/xdg/autostart/guake.desktop
+# 	else
+# 		sudo rm /usr/share/applications/guake.desktop
+# 		sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
+# 	fi
+# else
+# 	sudo install -m 644  /usr/share/guake/autostart-guake.desktop /etc/xdg/autostart/guake.desktop
+# fi
 
 
-# setup bash profile
-cp ./.gfasters-bashrc ~/ &&
-grep -Fq "source ~/.gfasters-bashrc" < ~/.bashrc || echo "source ~/.gfasters-bashrc" >> ~/.bashrc
+sudo apt update && sudo apt upgrade
 
-# enable gcm - there is probably more to do here
-# git config --global credential.credentialStore "cache --timeout=86400"
-
-# VIM setup
-mkdir -p ~/.config/nvim
-if [ -f ~/.config/nvim/init.vim ]; then
-	grep -Fq "source ~/.vimrc" < ~/.config/nvim/init.vim || echo "source ~/.vimrc" >> ~/.config/nvim/init.vim
-else
-	echo "source ~/.vimrc" > ~/.config/nvim/init.vim
-fi
-cp ./vimrc.vim ~/.vimrc
-nvim +PlugInstall +qall
-
+sh load_dotfiles.sh -I
 
 
 # Settings - I need to check if this may change
@@ -40,13 +26,12 @@ xfconf-query -c xfce4-desktop -v --create -p /desktop-icons/style -t int -s 0
 
 # Setup network security
 mkdir -p /usr/local/scripts/setup
-install -m 700 # adfafsaafafasd
+# install -m 700 # adfafsaafafasd
 
 
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
-sudo ufw allow 443/tcp # Discord text chat
 sudo ufw allow 5353/udp # avahi
 sudo ufw allow imap
 sudo ufw allow smtp

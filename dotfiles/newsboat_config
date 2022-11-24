@@ -1,0 +1,12 @@
+bind-key k up
+bind-key j down
+
+color info white blue bold
+color listfocus white magenta bold
+color listfocus_unread cyan magenta bold
+
+# browsers
+browser lynx
+macro i set browser feh; open-in-browser; set browser lynx
+macro s set browser "surf %u >/dev/null 2>&1"; open-in-browser; set browser lynx
+macro f set browser firefox; open-in-browser; set browser lynx

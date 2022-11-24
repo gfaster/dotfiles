@@ -17,6 +17,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'sheerun/vim-polyglot'
 Plug 'xolox/vim-misc'
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
 "Plug 'ggandor/leap.nvim'
 "Plug 'airblade/vim-gitgutter'
 
@@ -31,7 +32,7 @@ let mapleader = ","
 
 nnoremap <leader>f :NERDTreeFocus<CR>
 "nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 nmap <F8> :TagbarToggle<CR>
 
