@@ -21,6 +21,8 @@ alias nb="guake -r feedreader; newsboat; guake -r -"
 
 alias gc="git commit -m"
 alias ga="git add"
+gat() { git add $1; git status; }
+alias gt="git status"
 
 cs() { cd "$@" && ls; }
 

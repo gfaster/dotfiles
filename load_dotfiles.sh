@@ -3,14 +3,12 @@ set -e
 
 
 install_bashrc() {
-	# setup bash profile
 	echo "installing bashrc to ~/.gfasters-bashrc"
 	cp ./dotfiles/bashrc.sh ~/.gfasters-bashrc &&
 		grep -Fq "source ~/.gfasters-bashrc" < ~/.bashrc || echo "source ~/.gfasters-bashrc" >> ~/.bashrc
 }
 
 install_vimrc() {
-	# VIM setup
 	echo "installing vimrc to ~/.vimrc"
 	mkdir -p ~/.config/nvim
 	if [ -f ~/.config/nvim/init.vim ]; then
@@ -27,6 +25,14 @@ install_newsboatconfigs() {
 	mkdir -p ~/.newsboat
 	cp ./dotfiles/newsboat_config ~/.newsboat/config
 	cp ./dotfiles/newsboat_urls ~/.newsboat/urls
+	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> ~/.newsboat/urls
+	chmod 640 ~/.newsboat/urls; chmod 640 ./dotfiles/newsboat_urls.private
+}
+
+install_lynxconfigs() {
+	echo "installing lynx configs to /etc/lynx/"
+	sudo mkdir -p /etc/lynx/
+	sudo cp ./dotfiles/lynx.lss /etc/lynx/
 }
 
 choose_installs() {
