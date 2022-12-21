@@ -17,7 +17,7 @@ alias noslp="xset -dpms; xset s noblank; xset s off"
 alias py="python3"
 alias python="python3"
 alias pip="pip3"
-alias nb="guake -r feedreader; newsboat; guake -r -"
+alias nb="newsboat"
 
 alias gc="git commit -m"
 alias ga="git add"
@@ -32,6 +32,10 @@ alias h="history 20"
 
 alias dt="cd ~/Desktop"
 alias dn="cd ~/Downloads"
+
+alias bashrc="source ~/.gfasters-bashrc"
+alias def="xfce4-dict -d"
+
 
 # from https://superuser.com/a/611582
 countdown() {

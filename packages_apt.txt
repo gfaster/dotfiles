@@ -1,4 +1,3 @@
-guake
 neovim
 git
 firefox
@@ -17,3 +16,4 @@ universal-ctags
 surf
 lynx
 newsboat
+thefuck

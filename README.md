@@ -1,28 +1,20 @@
 # ubuntu-setup
-My ubuntu setup script, made for setting up a new ubuntu installation
-I still haven't tested this so it's gonna be up to future me
+My ubuntu setup script, made for setting up a new xubuntu installation
+I still haven't tested a lot of this, so use at own peril
 
 ## What it installs
-* guake
-* neovim
-* git
+### apt:
+see [packages_apt.txt](./packages_apt.txt) for repository packages
+
+1password (directly from developer)
+
+### snap:
+* thunderbird
 * firefox
-* fd-find
-* aptitude
-* discord
-* 1password (snap)
-* thunderbird (snap)
+
+### Other:
 * solarized-dark colorpack
-* apparmor-profiles
-* auditd
-* audispd-plugins
-* apparmor-utils
-* git credential manager
-* g++
-* pip
-* sublime text
-* cmake
-* universal-ctags
+
 ### Vim
 * vim plug 
   * preservim/nerdtree
@@ -43,13 +35,18 @@ I still haven't tested this so it's gonna be up to future me
 ## Manual steps still needed:
 - set colorpack, icons, and window manager theme in xfce
 - remap super-up to maximize
-- probably more git gcm setup
 - 1password ssh credential manager
 - setup for programs such as 1password, thunderbird, firefox
 
 ## TODO:
-[X] include [fd](https://github.com/sharkdp/fd)
-[ ] add `vi +%(line_number)s %(file_path)s -c 'normal zz'` to guake quick open
-[ ] set guake theme to "solarized dark higher contrast"
-[ ] add a solution to [this](https://github.com/snapcrafters/discord/issues/23) issue
-[ ] Get leap (see HN article)
+ * [ ] add a solution to [this](https://github.com/snapcrafters/discord/issues/23) issue
+ * [ ] setup xmodmap rebinds although maybe use [this](https://wiki.archlinux.org/title/Map_scancodes_to_keycodes)
+ * [ ] setup i3
+    * [ ] install i3
+    * [ ] i3 configs
+    * [ ] picom install + configs
+    * [ ] write a custom window shader
+    * [ ] disable panel + xdesktop + xfwm4 (session manager + `/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml`)
+    * [ ] create background to set with feh
+    * [ ] preserve xfce-terminal settings
+ * [ ] Install Nord to `~/.local/share/xfce4/terminal/colorschemes` [permalink](https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/efd7684d4ab539121a1ff7eb421abc651c80f617/src/nord.theme)
