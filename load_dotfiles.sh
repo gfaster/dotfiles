@@ -21,19 +21,36 @@ install_vimrc() {
 }
 
 install_newsboatconfigs() {
-	echo "installing newsboat configs to ~/.newsboat/"
+	target="~/.newsboat/"
+	echo "installing newsboat configs to $target"
 	mkdir -p ~/.newsboat
-	cp ./dotfiles/newsboat_config ~/.newsboat/config
-	cp ./dotfiles/newsboat_urls ~/.newsboat/urls
-	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> ~/.newsboat/urls
-	chmod 640 ~/.newsboat/urls; chmod 640 ./dotfiles/newsboat_urls.private
+	cp ./dotfiles/newsboat_config $target/config
+	cp ./dotfiles/newsboat_urls $target/urls
+	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> $target/urls
+	chmod 640 $target/urls; chmod 640 ./dotfiles/newsboat_urls.private
 }
 
 install_lynxconfigs() {
-	echo "installing lynx configs to /etc/lynx/"
-	sudo mkdir -p /etc/lynx/
-	sudo cp ./dotfiles/lynx.lss /etc/lynx/
+	target="/etc/lynx/"
+	echo "installing lynx configs to $target"
+	sudo mkdir -p $target
+	sudo cp ./dotfiles/lynx.lss $target
 }
+
+install_i3() {
+	echo "installing i3 and i3status config to ~/.config/i3(status)"
+	mkdir -p ~/.config/i3/
+	mkdir -p ~/.config/i3status/
+	cp ./dotfiles/i3config ~/.config/i3/config
+	cp ./dotfiles/i3statusconfig ~/.config/i3status/config
+}
+
+install_background() {
+	echo "installing background to ~/.config/fehbg/"
+
+
+}
+
 
 choose_installs() {
 	case $1 in
