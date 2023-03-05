@@ -4,8 +4,40 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 
-format = "\\[ [$directory](blue)\\] $all"
+format = """\\[$directory\\]\
+$shlvl\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$package\
+$c\
+$cmake\
+$python\
+$rust\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$status\
+$character
+"""
 
 add_newline = false
 
 scan_timeout = 5
+
+[directory]
+style = 'bold purple'
+format = '[$path]($style)[$read_only]($read_only_style)'
+
+[character]
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
+
+[status]
+disabled = false
