@@ -6,17 +6,22 @@ mkdir -p tmp
 
 
 # Install apt packages
+set +e
 cat packages_apt.txt | grep -v '^[ \t]*#' | grep -v "^$" |
     while IFS= read -r line; do
         sudo apt -y install $line
     done
+set -e
+
+# Fonts
+# --------------------
+# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/DejaVuSansMono.zip > ./tmp/DejaVuSansMono.zip
+# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip > ./tmp/FiraCode.zip
 
 
 # General tools
 # --------------------
-
-# snap install thunderbird
-
+cargo install starship --locked
 
 
 # Needs to be set manually in xfce
@@ -30,13 +35,6 @@ sudo tar -xf ./tmp/rtl88-Themes-1.3/solarized-dark-gtk-theme-colorpack_1.3.tar.g
 
 # Dev tools
 # --------------------
-
-# git credential manager (superceded by 1password)
-# if [ ! -x git-credential-manager-core; ]; then  
-# 	curl -LO https://raw.githubusercontent.com/GitCredentialManager/git-credential-manager/main/src/linux/Packaging.Linux/install-from-source.sh &&
-# 	sh ./install-from-source.sh &&
-# 	git-credential-manager-core configure
-# fi
 
 # VIM setup (initial install above)
 #---------------------

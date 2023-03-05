@@ -1,0 +1,11 @@
+# https://starship.rs/config/
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+
+format = "\\[ [$directory](blue)\\] $all"
+
+add_newline = false
+
+scan_timeout = 5

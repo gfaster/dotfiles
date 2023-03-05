@@ -18,6 +18,8 @@ esac
 # remap caps to escape
 setxkbmap -option caps:escape
 
+alias tree="exa -T"
+alias ls="exa"
 alias l="ls -a"
 alias ll="ls -lah"
 alias fd="fdfind"
@@ -71,3 +73,4 @@ mdw() {
     pandoc "$@" | w3m -T text/html
 }
 
+eval "$(starship init bash)"

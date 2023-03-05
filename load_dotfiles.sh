@@ -46,6 +46,11 @@ install_i3() {
 	i3-msg restart || true
 }
 
+install_starship() {
+	echo "installing starship.toml to ~/.config/starship.toml"
+	cp ./dotfiles/starship.toml ~/.config/starship.toml
+}
+
 install_background() {
 	echo "installing background to /usr/share/backgrounds"
 
@@ -73,6 +78,9 @@ choose_installs() {
 		"i3")
 			install_i3
 			install_background
+			;;
+		"starship")
+			install_starship
 			;;
 	esac
 }

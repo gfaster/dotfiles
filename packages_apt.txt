@@ -16,4 +16,14 @@ universal-ctags
 surf
 lynx
 newsboat
-thefuck
+texlive
+textlive-latex-extra
+rclone
+pandoc
+neofetch
+feh
+w3m
+rofi
+tree
+exa
+fonts-firacode
