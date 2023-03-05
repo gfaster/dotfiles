@@ -21,7 +21,7 @@ set -e
 
 # General tools
 # --------------------
-cargo install starship --locked
+which starship || cargo install starship --locked
 
 
 # Needs to be set manually in xfce

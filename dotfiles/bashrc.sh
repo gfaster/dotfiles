@@ -3,17 +3,25 @@ export PROMPT_DIRTRIM=3
 
 export SSH_AUTH_SOCK=~/.1password/agent.sock
 
-export PS1="[\[\e[1;35m\]\W/\[\e[0m\]]\[\e[1m\]\$\[\e[0m\] "
+# export PS1="[\[\e[1;35m\]\W/\[\e[0m\]]\[\e[1m\]\$\[\e[0m\] "
 # export PS1="[\e[1;35m\W/\e[0m]\e[1m\$\e[0m "
 #
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+# case "$TERM" in
+# xterm*|rxvt*)
+#     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\w\a\]$PS1"
+#     ;;
+# *)
+#     ;;
+# esac
+
+
+setwintitle() {
+    win_title="${debian_chroot:+($debian_chroot)}\w\a"
+    echo -ne '\033]2;'${win_title@P}'\007'
+}
+
+starship_precmd_user_func="setwintitle"
 
 # remap caps to escape
 setxkbmap -option caps:escape

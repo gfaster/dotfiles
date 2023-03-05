@@ -5,7 +5,7 @@
 
 
 format = """\\[$directory\\]\
-$shlvl\
+( $shlvl\
 $git_branch\
 $git_commit\
 $git_state\
@@ -19,11 +19,10 @@ $rust\
 $env_var\
 $custom\
 $sudo\
-$cmd_duration\
-$line_break\
-$jobs\
+$cmd_duration\n)\
+( $jobs\
 $battery\
-$status\
+$status)\
 $character
 """
 
@@ -33,11 +32,12 @@ scan_timeout = 5
 
 [directory]
 style = 'bold purple'
-format = '[$path]($style)[$read_only]($read_only_style)'
+format = '[$path]($style)[( $read_only)]($read_only_style)'
+read_only_style = 'bold red'
 
 [character]
-success_symbol = '[\$](bold green)'
-error_symbol = '[\$](bold red)'
+success_symbol = '[\$](bold fg:244)'
+error_symbol = '[\$](bold fg:244)'
 
 [status]
 disabled = false
