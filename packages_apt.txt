@@ -1,6 +1,6 @@
 neovim
 git
-firefox
+firefox-esr
 curl
 fd-find
 aptitude

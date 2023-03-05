@@ -15,7 +15,7 @@ cat packages_apt.txt | grep -v '^[ \t]*#' | grep -v "^$" |
 # General tools
 # --------------------
 
-snap install thunderbird
+# snap install thunderbird
 
 
 

@@ -21,9 +21,9 @@ install_vimrc() {
 }
 
 install_newsboatconfigs() {
-	target="~/.newsboat/"
+	target="~/.newsboat"
 	echo "installing newsboat configs to $target"
-	mkdir -p ~/.newsboat
+	mkdir -p $target
 	cp ./dotfiles/newsboat_config $target/config
 	cp ./dotfiles/newsboat_urls $target/urls
 	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> $target/urls
@@ -31,7 +31,7 @@ install_newsboatconfigs() {
 }
 
 install_lynxconfigs() {
-	target="/etc/lynx/"
+	target="/etc/lynx"
 	echo "installing lynx configs to $target"
 	sudo mkdir -p $target
 	sudo cp ./dotfiles/lynx.lss $target
@@ -43,11 +43,11 @@ install_i3() {
 	mkdir -p ~/.config/i3status/
 	cp ./dotfiles/i3config ~/.config/i3/config
 	cp ./dotfiles/i3statusconfig ~/.config/i3status/config
+	i3-msg restart || true
 }
 
 install_background() {
-	echo "installing background to ~/.config/fehbg/"
-
+	echo "installing background to /usr/share/backgrounds"
 
 }
 
@@ -58,6 +58,8 @@ choose_installs() {
 			install_bashrc
 			install_vimrc
 			install_newsboatconfigs
+			install_i3
+			install_background
 			;;
 		"bashrc")
 			install_bashrc
@@ -67,6 +69,10 @@ choose_installs() {
 			;;
 		"newsboat")
 			install_newsboatconfigs
+			;;
+		"i3")
+			install_i3
+			install_background
 			;;
 	esac
 }
