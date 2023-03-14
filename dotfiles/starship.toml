@@ -4,7 +4,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 
-format = """\\[$directory\\]\
+format = """($cmd_duration\n)\\[$directory\\]\
 ( $shlvl\
 $git_branch\
 $git_commit\
@@ -19,7 +19,7 @@ $rust\
 $env_var\
 $custom\
 $sudo\
-$cmd_duration\n)\
+\n)\
 ( $jobs\
 $battery\
 $status)\

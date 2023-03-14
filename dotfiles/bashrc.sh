@@ -2,6 +2,7 @@
 export PROMPT_DIRTRIM=3
 
 export SSH_AUTH_SOCK=~/.1password/agent.sock
+export BLOCKSIZE=1k
 
 # export PS1="[\[\e[1;35m\]\W/\[\e[0m\]]\[\e[1m\]\$\[\e[0m\] "
 # export PS1="[\e[1;35m\W/\e[0m]\e[1m\$\e[0m "
@@ -44,6 +45,8 @@ alias gc="git commit -m"
 alias ga="git add"
 gat() { git add $1; git status; }
 alias gt="git status"
+alias gl="git log --oneline -n 16"
+alias glg="git log --oneline --graph -n 16"
 
 cs() { cd "$@" && ls; }
 
