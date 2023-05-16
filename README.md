@@ -50,3 +50,4 @@ see [packages_apt.txt](./packages_apt.txt) for repository packages
     * [ ] create background to set with feh
     * [ ] preserve xfce-terminal settings
  * [ ] Install Nord to `~/.local/share/xfce4/terminal/colorschemes` [permalink](https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/efd7684d4ab539121a1ff7eb421abc651c80f617/src/nord.theme)
+  * [ ] Fira Code 12 Terminal font

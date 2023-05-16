@@ -66,9 +66,9 @@ tztime local {
         format = "%Y-%m-%d %H:%M:%S"
 }
 
-tztime home {
-        format = "Home: %time"
-				format_time = "%H:%M:%S"
-				timezone = "EST"
-				hide_if_equals_localtime = true
-}
+# tztime home {
+#         format = "Home: %time"
+# 				format_time = "%H:%M:%S"
+# 				timezone = "EST"
+# 				hide_if_equals_localtime = true
+# }

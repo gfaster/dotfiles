@@ -2,8 +2,6 @@
 
 OUTPUT="sysinfo.txt"
 
-rm -rf $OUTPUT
+rm -f $OUTPUT
 
-lscpu >> $OUTPUT
-echo "---------------------------------------------" >> $OUTPUT
 apt list --manual-installed >> $OUTPUT

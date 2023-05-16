@@ -56,6 +56,11 @@ install_background() {
 
 }
 
+install_fish() {
+	echo "installing config.fish to ~/.config/fish/config.fish"
+	cp ./dotfiles/config.fish ~/.config/fish/config.fish
+}
+
 
 choose_installs() {
 	case $1 in
@@ -81,6 +86,13 @@ choose_installs() {
 			;;
 		"starship")
 			install_starship
+			;;
+		"fish")
+			install_fish
+			;;
+		\?)
+			echo "Unknown install"
+			exit 1
 			;;
 	esac
 }

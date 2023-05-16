@@ -10,7 +10,7 @@ sh load_dotfiles.sh -I
 # Settings - I need to check if this may change
 # xfconf-query -c xfce4-panel -p /plugins/plugin-12/digital-format -s "%Y-%m-%d %l:%M %p (%a)"
 # disable desktop icons (set to 2 to restore)
-xfconf-query -c xfce4-desktop -v --create -p /desktop-icons/style -t int -s 0
+# xfconf-query -c xfce4-desktop -v --create -p /desktop-icons/style -t int -s 0
 
 sudo ufw allow ssh
 sudo ufw allow http
@@ -20,6 +20,10 @@ sudo ufw allow imap
 sudo ufw allow smtp
 sudo ufw logging on
 sudo ufw enable
+
+# Keyboard config
+setxkbmap -option
+setkxbmap -option caps:escape
 
 
 # Parts of this were stolen from: https://github.com/ukncsc/Device-Security-Guidance-Configuration-Packs/blob/main/Linux/UbuntuLTS/

@@ -40,6 +40,7 @@ alias py="python3"
 alias python="python3"
 alias pip="pip3"
 alias nb="newsboat"
+alias vim="vi -u /dev/null"
 
 alias gc="git commit -m"
 alias ga="git add"
