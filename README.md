@@ -15,7 +15,7 @@ see [packages_apt.txt](./packages_apt.txt) for repository packages
 ### Other:
 * solarized-dark colorpack
 
-### Vim
+### Vim old
 * vim plug 
   * preservim/nerdtree
   * w0rp/ale
@@ -40,14 +40,10 @@ see [packages_apt.txt](./packages_apt.txt) for repository packages
 
 ## TODO:
  * [ ] add a solution to [this](https://github.com/snapcrafters/discord/issues/23) issue
+ * [ ] vim leader + l -> :e#
  * [ ] setup xmodmap rebinds although maybe use [this](https://wiki.archlinux.org/title/Map_scancodes_to_keycodes)
- * [ ] setup i3
-    * [ ] install i3
-    * [ ] i3 configs
     * [ ] picom install + configs
     * [ ] write a custom window shader
     * [ ] disable panel + xdesktop + xfwm4 (session manager + `/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml`)
-    * [ ] create background to set with feh
     * [ ] preserve xfce-terminal settings
- * [ ] Install Nord to `~/.local/share/xfce4/terminal/colorschemes` [permalink](https://raw.githubusercontent.com/arcticicestudio/nord-xfce-terminal/efd7684d4ab539121a1ff7eb421abc651c80f617/src/nord.theme)
-  * [ ] Fira Code 12 Terminal font
+ * [ ] Fira Code 12 Terminal font
