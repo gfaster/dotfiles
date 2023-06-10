@@ -13,22 +13,17 @@ cat packages_apt.txt | grep -v '^[ \t]*#' | grep -v "^$" |
     done
 set -e
 
-# Fonts
-# --------------------
-# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/DejaVuSansMono.zip > ./tmp/DejaVuSansMono.zip
-# curl -L https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/FiraCode.zip > ./tmp/FiraCode.zip
+# Rust
+if ! which rustup ; then
+    $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+fi
 
 
 # General tools
 # --------------------
 which starship || cargo install starship --locked
+which alacritty || cargo install alacritty --locked
 
-
-# Needs to be set manually in xfce
-# TODO: auto set theme, icons, and window manager theme
-curl -L https://github.com/rtlewis88/rtl88-Themes/archive/refs/tags/1.3.tar.gz > ./tmp/solarized.tar.gz
-tar -xf ./tmp/solarized.tar.gz -C ./tmp/
-sudo tar -xf ./tmp/rtl88-Themes-1.3/solarized-dark-gtk-theme-colorpack_1.3.tar.gz -C /usr/share/themes
 
 # Security
 # --------------------

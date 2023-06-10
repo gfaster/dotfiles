@@ -31,10 +31,10 @@ install_newsboatconfigs() {
 }
 
 install_lynxconfigs() {
-	target="/etc/lynx"
+	target="~/.config/lynx"
 	echo "installing lynx configs to $target"
 	sudo mkdir -p $target
-	sudo cp ./dotfiles/lynx.lss $target
+	sudo cp ./dotfiles/lynx.lss $target/lynx.lss
 }
 
 install_i3() {
@@ -68,8 +68,8 @@ choose_installs() {
 			install_bashrc
 			install_vimrc
 			install_newsboatconfigs
-			install_i3
 			install_background
+			install_starship
 			;;
 		"bashrc")
 			install_bashrc
@@ -89,6 +89,9 @@ choose_installs() {
 			;;
 		"fish")
 			install_fish
+			;;
+		"lynx")
+			install_lynxconfigs
 			;;
 		\?)
 			echo "Unknown install"

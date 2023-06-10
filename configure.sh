@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 set -e
 
 
@@ -29,32 +29,35 @@ setkxbmap -option caps:escape
 # Parts of this were stolen from: https://github.com/ukncsc/Device-Security-Guidance-Configuration-Packs/blob/main/Linux/UbuntuLTS/
 # -------------------------------------
 # Disable spyware
-set +e
-sudo systemctl stop apport.service
-sudo systemctl disable apport.service
-sudo systemctl mask apport.service
+if [[ $(uname -a) =~ 'Ubuntu' ]]; then
+	set +e
+	sudo systemctl stop apport.service
+	sudo systemctl disable apport.service
+	sudo systemctl mask apport.service
 
-sudo systemctl stop whoopsie.service
-sudo systemctl disable whoopsie.service
-sudo systemctl mask whoopsie.service
+	sudo systemctl stop whoopsie.service
+	sudo systemctl disable whoopsie.service
+	sudo systemctl mask whoopsie.service
 
-sudo systemctl stop ua-messaging.timer
-sudo systemctl disable ua-messaging.timer
-sudo systemctl mask ua-messaging.timer
+	sudo systemctl stop ua-messaging.timer
+	sudo systemctl disable ua-messaging.timer
+	sudo systemctl mask ua-messaging.timer
 
-sudo systemctl stop ua-messaging.service
-sudo systemctl diable ua-messaging.service
-sudo systemctl mask ua-messaging.service
+	sudo systemctl stop ua-messaging.service
+	sudo systemctl diable ua-messaging.service
+	sudo systemctl mask ua-messaging.service
 
-sudo systemctl stop ua-timer.timer
-sudo systemctl disable ua-timer.timer
-sudo systemctl mask ua-timer.timer
+	sudo systemctl stop ua-timer.timer
+	sudo systemctl disable ua-timer.timer
+	sudo systemctl mask ua-timer.timer
 
-sudo rm /etc/apt/apt.conf.d/20apt-esm-hook.conf
+	# remove ads in apt
+	sudo rm /etc/apt/apt.conf.d/20apt-esm-hook.conf
 
-sudo apt-get remove -y popularity-contest
+	sudo apt-get remove -y popularity-contest
 
-set -e
+	set -e
+fi
 
 # Set some AppArmor profiles to enforce mode.
 # avahi broadcasts on local network
