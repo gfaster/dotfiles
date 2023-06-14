@@ -1,3 +1,4 @@
+# vim syntax=sh
 # shorten dir
 export PROMPT_DIRTRIM=3
 
@@ -84,5 +85,7 @@ stopwatch() {
 mdw() {
     pandoc "$@" | w3m -T text/html
 }
+
+set -o vi
 
 eval "$(starship init bash)"

@@ -34,6 +34,7 @@ scan_timeout = 5
 style = 'bold purple'
 format = '[$path]($style)[( $read_only)]($read_only_style)'
 read_only_style = 'bold red'
+read_only = 'RO '
 
 [character]
 success_symbol = '[\$](bold fg:244)'
@@ -41,3 +42,4 @@ error_symbol = '[\$](bold fg:244)'
 
 [status]
 disabled = false
+symbol = 'X'

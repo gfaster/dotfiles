@@ -27,14 +27,14 @@ install_newsboatconfigs() {
 	cp ./dotfiles/newsboat_config $target/config
 	cp ./dotfiles/newsboat_urls $target/urls
 	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> $target/urls
-	chmod 640 $target/urls; chmod 640 ./dotfiles/newsboat_urls.private
+	test -e ./dotfiles/newsboat_urls.private && chmod 640 $target/urls; chmod 640 ./dotfiles/newsboat_urls.private
 }
 
 install_lynxconfigs() {
 	target="~/.config/lynx"
 	echo "installing lynx configs to $target"
 	sudo mkdir -p $target
-	sudo cp ./dotfiles/lynx.lss $target/lynx.lss
+	sudo cp ./dotfiles/lynx.lss ~/.config/lynx/lynx.lss
 }
 
 install_i3() {
@@ -53,12 +53,9 @@ install_starship() {
 
 install_background() {
 	echo "installing background to /usr/share/backgrounds"
-
-}
-
-install_fish() {
-	echo "installing config.fish to ~/.config/fish/config.fish"
-	cp ./dotfiles/config.fish ~/.config/fish/config.fish
+	mkdir -p ~/.local/share/backgrounds
+	cp ./data/creation_background.png ~/.local/share/backgrounds/
+	feh --bg-fill ~/.local/share/backgrounds/creation_background.png
 }
 
 
@@ -66,7 +63,6 @@ choose_installs() {
 	case $1 in
 		"all")
 			install_bashrc
-			install_vimrc
 			install_newsboatconfigs
 			install_background
 			install_starship
@@ -80,15 +76,15 @@ choose_installs() {
 		"newsboat")
 			install_newsboatconfigs
 			;;
+		"background")
+			install_background
+			;;
 		"i3")
 			install_i3
 			install_background
 			;;
 		"starship")
 			install_starship
-			;;
-		"fish")
-			install_fish
 			;;
 		"lynx")
 			install_lynxconfigs

@@ -46,9 +46,9 @@ exec --no-startup-id picom --config ~/.config/picom.conf -b
 exec --no-startup-id feh --bg-fill /usr/share/backgrounds/creation_background.png
 
 # need some basic utilities here
-exec --no-startup-id xfce4-power-manager
-exec xfsettingsd
-# exec --no-startup-id xiccd
+# exec --no-startup-id xfce4-power-manager
+# exec xfsettingsd
+exec --no-startup-id xiccd
 exec --no-startup-id aa-notify -p -s 1 -w 60
 
 # Use pactl to adjust volume in PulseAudio.
@@ -62,7 +62,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec ~/.cargo/bin/alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
