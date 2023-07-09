@@ -1,0 +1,7 @@
+import:
+ - ~/.config/alacritty/themes/citylights.yaml
+
+font:
+  normal: 
+    family: FiraCode
+    style: Regular

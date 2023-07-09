@@ -43,3 +43,9 @@ error_symbol = '[\$](bold fg:244)'
 [status]
 disabled = false
 symbol = 'X'
+
+[package]
+symbol = ''
+
+[rust]
+symbol = 'Rust '

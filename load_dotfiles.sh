@@ -1,5 +1,4 @@
 #!bin/bash
-set -e
 
 
 install_bashrc() {
@@ -9,15 +8,9 @@ install_bashrc() {
 }
 
 install_vimrc() {
-	echo "installing vimrc to ~/.vimrc"
+	echo "installing vimrc to ~/.config/nvim/init.lua"
 	mkdir -p ~/.config/nvim
-	if [ -f ~/.config/nvim/init.vim ]; then
-		grep -Fq "source ~/.vimrc" < ~/.config/nvim/init.vim || echo "source ~/.vimrc" >> ~/.config/nvim/init.vim
-	else
-		echo "source ~/.vimrc" > ~/.config/nvim/init.vim
-	fi
-	cp ./dotfiles/vimrc.vim ~/.vimrc
-	nvim +PlugInstall +qall
+	cp ./dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 }
 
 install_newsboatconfigs() {
@@ -26,15 +19,13 @@ install_newsboatconfigs() {
 	mkdir -p $target
 	cp ./dotfiles/newsboat_config $target/config
 	cp ./dotfiles/newsboat_urls $target/urls
-	test -e ./dotfiles/newsboat_urls.private && cat ./dotfiles/newsboat_urls.private >> $target/urls
-	test -e ./dotfiles/newsboat_urls.private && chmod 640 $target/urls; chmod 640 ./dotfiles/newsboat_urls.private
 }
 
 install_lynxconfigs() {
 	target="~/.config/lynx"
 	echo "installing lynx configs to $target"
-	sudo mkdir -p $target
-	sudo cp ./dotfiles/lynx.lss ~/.config/lynx/lynx.lss
+	mkdir -p $target
+	cp ./dotfiles/lynx.lss ~/.config/lynx/lynx.lss
 }
 
 install_i3() {
@@ -49,6 +40,12 @@ install_i3() {
 install_starship() {
 	echo "installing starship.toml to ~/.config/starship.toml"
 	cp ./dotfiles/starship.toml ~/.config/starship.toml
+}
+
+install_rofi() {
+	echo "installing rofi.rasi to ~/.config/rofi/config.rasi"
+	mkdir -p ~/.config/rofi
+	cp ./dotfiles/rofi.rasi ~/.cofig/rofi/config.rasi
 }
 
 install_background() {
@@ -66,6 +63,8 @@ choose_installs() {
 			install_newsboatconfigs
 			install_background
 			install_starship
+			install_rofi
+			install_vimrc
 			;;
 		"bashrc")
 			install_bashrc
@@ -86,6 +85,9 @@ choose_installs() {
 		"starship")
 			install_starship
 			;;
+		"rofi")
+			install_rofi
+			;;
 		"lynx")
 			install_lynxconfigs
 			;;
@@ -97,19 +99,13 @@ choose_installs() {
 }
 
 
-while getopts ":i:g:IG" opt; do
+while getopts ":i:I" opt; do
 	case $opt in
 		i)
 			choose_installs "$OPTARG"
 			;;
-		g)
-			echo "-g was used with $OPTARG"
-			;;
 		I)
 			choose_installs all
-			;;
-		G) 
-			echo "Get all"
 			;;
 		\?)
 			echo "Unknown option $OPTARG"
