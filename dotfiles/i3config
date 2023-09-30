@@ -29,9 +29,10 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # exec --no-startup-id light-locker
 # (started by xdg autostart)
+
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i /usr/local/share/backgrounds/jwst_1_1920_blur.png -e
 
 exec --no-startup-id /lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 
@@ -42,7 +43,7 @@ exec --no-startup-id nm-applet --sm-disable
 # compositor is needed?
 exec --no-startup-id picom --config ~/.config/picom.conf -b
 
-exec --no-startup-id feh --bg-fill ~/.local/share/backgrounds/creation_background.png
+exec --no-startup-id feh --bg-fill /usr/local/share/backgrounds/jwst_1_1920.png
 
 # need some basic utilities here
 # exec --no-startup-id xfce4-power-manager
@@ -61,6 +62,10 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+
+# screenshot
+bindsym $mod+Print exec scrot -z - | xclip -i -selection clipboard -t image/png
+bindsym $mod+Shift+Print exec scrot -z -s - | xclip -i -selection clipboard -t image/png
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -125,6 +130,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+# set $ws1 "1:Ⅰ"
+# set $ws2 "2:Ⅱ"
+# set $ws3 "3:Ⅲ"
+# set $ws4 "4:Ⅳ"
+# set $ws5 "5:Ⅴ"
+# set $ws6 "6:Ⅵ"
+# set $ws7 "7:Ⅶ"
+# set $ws8 "8:Ⅷ"
+# set $ws9 "9:Ⅸ"
+# set $ws10 "10:Ⅹ"
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"

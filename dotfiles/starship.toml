@@ -13,12 +13,12 @@ $git_metrics\
 $git_status\
 $package\
 $c\
-$cmake\
 $python\
 $rust\
 $env_var\
 $custom\
 $sudo\
+$guix_shell\
 \n)\
 ( $jobs\
 $battery\
@@ -28,7 +28,7 @@ $character
 
 add_newline = false
 
-scan_timeout = 5
+scan_timeout = 1
 
 [directory]
 style = 'bold purple'
@@ -49,3 +49,6 @@ symbol = ''
 
 [rust]
 symbol = 'Rust '
+
+[guix_shell]
+symbol = "Guix "

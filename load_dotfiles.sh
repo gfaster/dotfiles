@@ -5,6 +5,10 @@ install_bashrc() {
 	echo "installing bashrc to ~/.gfasters-bashrc"
 	cp ./dotfiles/bashrc.sh ~/.gfasters-bashrc &&
 		grep -Fq "source ~/.gfasters-bashrc" < ~/.bashrc || echo "source ~/.gfasters-bashrc" >> ~/.bashrc
+	echo "installing bash_profile to ~/.bash_profile"
+	cp ./dotfiles/bash_profile.sh ~/.bash_profile
+	echo "installing profile.sh to ~/.profile"
+	cp ./dotfiles/profile.sh ~/.profile
 }
 
 install_vimrc() {
@@ -102,6 +106,7 @@ choose_installs() {
 while getopts ":i:I" opt; do
 	case $opt in
 		i)
+			set -e
 			choose_installs "$OPTARG"
 			;;
 		I)

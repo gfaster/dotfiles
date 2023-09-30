@@ -2,8 +2,9 @@
 # shorten dir
 export PROMPT_DIRTRIM=3
 
-export SSH_AUTH_SOCK=~/.1password/agent.sock
 export BLOCKSIZE=1k
+
+
 
 # export PS1="[\[\e[1;35m\]\W/\[\e[0m\]]\[\e[1m\]\$\[\e[0m\] "
 # export PS1="[\e[1;35m\W/\e[0m]\e[1m\$\e[0m "
@@ -26,7 +27,7 @@ setwintitle() {
 starship_precmd_user_func="setwintitle"
 
 # remap caps to escape
-setxkbmap -option caps:escape
+# setxkbmap -option caps:escape
 
 alias tree="exa -T"
 alias ls="exa"
@@ -36,6 +37,7 @@ alias fd="fdfind"
 
 alias slp="systemctl suspend"
 alias noslp="xset -dpms; xset s noblank; xset s off"
+alias ac="autorandr --cycle"
 
 alias py="python3"
 alias python="python3"
@@ -57,9 +59,10 @@ alias h="history 20"
 alias dt="cd ~/Desktop"
 alias dn="cd ~/Downloads"
 alias dc="cd ~/Documents"
+alias ds="cs ~/school/sem"
 
+alias gsh="guix shell -m manifest.scm"
 alias bashrc="source ~/.gfasters-bashrc"
-alias def="xfce4-dict -d"
 
 
 # from https://superuser.com/a/611582
@@ -68,7 +71,7 @@ countdown() {
     while [ $start -ge $(date +%s) ]; do
         time="$(( $start - $(date +%s) ))"
         printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
-        sleep 0.1
+        sleep 0.2
     done
 }
 
@@ -77,7 +80,7 @@ stopwatch() {
     while true; do
         time="$(( $(date +%s) - $start))"
         printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
-        sleep 0.1
+        sleep 0.2
     done
 }
 
