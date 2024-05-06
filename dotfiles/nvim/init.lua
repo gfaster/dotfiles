@@ -61,9 +61,6 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
-
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
     },
   },
 
@@ -91,7 +88,7 @@ require('lazy').setup({
     'rebelot/kanagawa.nvim',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa-wave'
     end,
   },
 
@@ -123,8 +120,10 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- paraenthesis are useful
+  -- parentheses are useful
   'tpope/vim-surround',
+  'tpope/vim-repeat',
+
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -153,9 +152,7 @@ require('lazy').setup({
 
 }, {})
 
--- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -163,9 +160,6 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
-
--- Enable mouse mode
-vim.o.mouse = 'a'
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -181,9 +175,9 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 500
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -198,8 +192,8 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
--- vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
--- vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -221,6 +215,13 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+    },
+    preview = {
+      treesitter = {
+        disable = {
+          'c', 'h', 'c++'
+        },
+      }
     },
   },
 }
@@ -248,6 +249,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 
 vim.keymap.set('n', '<leader>l', function() vim.api.nvim_command('e#') end, { desc = 'Open [L]ast file' })
+vim.keymap.set('n', '<leader>k', function() vim.lsp.stop_client(vim.lsp.get_active_clients({ name = "clangd" })) end,
+  { desc = 'Open [L]ast file' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -255,7 +258,6 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'vimdoc', 'vim', 'glsl' },
 
-  -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
 
   highlight = { enable = true },
@@ -378,8 +380,31 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
-  -- rust_analyzer = {},
   -- tsserver = {},
+
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      -- interpret = {
+      --   tests = true,
+      -- },
+      imports = {
+        preferPrelude = true,
+      },
+      inlayHints = {
+        closureCaptureHints = {
+          enable = true,
+        }
+      },
+      lens = {
+        enable = false,
+      },
+      hover = {
+        memoryLayout = {
+          niches = true,
+        },
+      },
+    }
+  },
 
   lua_ls = {
     Lua = {
@@ -461,5 +486,4 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

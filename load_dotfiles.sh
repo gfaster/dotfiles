@@ -56,7 +56,9 @@ install_background() {
 	echo "installing background to /usr/share/backgrounds"
 	mkdir -p ~/.local/share/backgrounds
 	cp ./data/creation_background.png ~/.local/share/backgrounds/
-	feh --bg-fill ~/.local/share/backgrounds/creation_background.png
+	cp ./data/jwst_1_1920.png ~/.local/share/backgrounds/
+	cp ./data/jwst_1_1920_blur.png ~/.local/share/backgrounds/
+	feh --bg-fill ~/.local/share/backgrounds/jwst_1_1920.png
 }
 
 

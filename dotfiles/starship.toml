@@ -19,6 +19,7 @@ $env_var\
 $custom\
 $sudo\
 $guix_shell\
+$nix_shell\
 \n)\
 ( $jobs\
 $battery\
@@ -52,3 +53,6 @@ symbol = 'Rust '
 
 [guix_shell]
 symbol = "Guix "
+
+[nix_shell]
+symbol = "Nix "
